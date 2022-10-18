@@ -1,0 +1,40 @@
+ Deep learning notes:
+
+perceptron is the basic structural building block of 
+of deep learning. It is another name for a single neuron.
+perceptron forward propogation : sum(inputs * weight) is passed through a non-linear activation function the result of which gives us the output y.
+we can then add a bias term to shift the result to right or left.
+this can be written in equation form as y = g(bias + sum(x{i} w{i}) with g being the activation function.
+common activation function used in neural networks are sigmoid function , hyperbolic tangent and rectified linear unit. 
+sigmoid function is popular as it outputs between 0 and 1 hence being suitable for probabilities.
+
+Activation functions are used to introduce non-linearities into the network. non linearity Allow us to approximate arbitrarily complex functions 
+simplified perceptron = dotproduct(sum&weights) + bias -> apply non-linearity
+
+Dense Layer from scratch
+class MyDenseLayer (tf keras layers Layer):
+  def _init_(self, input_dim, output_dim):
+    super(MyDenseLayer, self) _init_()
+    # Initialize weights and bias
+    self.W - self add_weight([input_dim, output_dim])
+    self b - self add_weight((1, output_dim])
+
+  def call(self, inputs):
+    # Forward propagate the inputs
+    Z = tf matmul(inputs, self.W) + self b
+    # Feed through a non-linear activation
+    output a tf math sigmoid(z)
+   return output
+
+single layer neural network : weights -> hidden layer -> outputs : it will have 2 different weigth values
+
+A cost function is required to train the network. 
+
+loss optimization -> finding weights with lowest loss
+
+Regularization: Technique that constrains the optimization problem to discourage complex models 
+used to improve generalization of model on unseen data 
+techniques:
+1: dropout-> randomly set 50% of activations (layer) to 0
+2: early stopping -> stop training before there is a chance to overfit
+
