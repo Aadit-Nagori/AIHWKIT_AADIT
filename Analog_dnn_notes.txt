@@ -1,0 +1,14 @@
+The analog AI hardware kit provides a state-of-the-art statistical model of a phase-change memory (PCM) array that can be used when performing 
+inference to simulate the various sources of noise that are present in a real hardware [1]. This model is calibrated based on extensive measurements 
+performed on an array containing 1 million PCM devices fabricated at IBM [2].
+
+PCM is a key enabling technology for non-volatile electrical data storage at the nanometer scale, which can be used for analog AI [3].
+A PCM device consists of a small active volume of phase-change material sandwiched between two electrodes. In PCM, data is stored by using 
+the electrical resistance contrast between a high-conductive crystalline phase and a low-conductive amorphous phase of the phase-change material. 
+The phase-change material can be switched from low to high conductive state, and vice-versa, through applying electrical current pulses. 
+The stored data can be retrieved by measuring the electrical resistance of the PCM device. An appealing attribute of PCM is that the 
+stored data is retained for a very long time (typically 10 years at room temperature), but is written in only a few nanoseconds.
+
+The model simulates three different sources of noise from the PCM array: programming noise, read noise and temporal drift. The model is 
+only used during inference and therefore it is assumed that network weights have been trained beforehand in software. The diagram below 
+explains how these three sources of noise are incorporated during inference when using the statistical model:
