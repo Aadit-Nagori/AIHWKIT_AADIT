@@ -12,3 +12,14 @@ stored data is retained for a very long time (typically 10 years at room tempera
 The model simulates three different sources of noise from the PCM array: programming noise, read noise and temporal drift. The model is 
 only used during inference and therefore it is assumed that network weights have been trained beforehand in software. The diagram below 
 explains how these three sources of noise are incorporated during inference when using the statistical model:
+
+Mapping the trained weights to target conductances
+This step is typically done offline, after training, before programming the hardware. When the final converged network weights  
+have been obtained after training, they must be converted to target conductance values  that will be programmed on the hardware, 
+within the range that it supports. In the statistical model, this range is set to , where  corresponds to the largest conductance 
+value that can be reliably programmed on the hardware.
+
+The statistical model assumes that each weight is programmed on two PCM devices in a differential configuration. That is, depending on 
+the sign of the weight, either the device encoding the positive part of the weight or the negative part is programmed, and the other 
+device is set to 0. Thus, the simplest way to map the weights to conductances is to multiply the weights by scaling factor , 
+which is different for every network layer. A simple approach is to use , where  is the maximum absolute weight value of a layer.

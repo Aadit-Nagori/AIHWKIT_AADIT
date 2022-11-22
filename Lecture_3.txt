@@ -1,0 +1,44 @@
+Deep learning with Computer Vision
+
+2 common types od machine learning tasks in computer vision 
+-> regression: output variable takes a continuous value
+-> classification: output variable takess class label. Can produce probability of belonging to a 
+particular class.
+
+clasification is done by identifying high level features in images. 
+like for faces - eyes, nose, mouth etc. Using a heirachy of features to slowly build up to high level feature 
+recognition
+
+Instead of 'flattening' the 2d image to 1d by connecting each pixel to a neuron,
+preserve the 2d image by connecting patches of input to neurons in the hidden layer, hence reducing the no of parameters.
+This works as pixels close to each other share a lot of features or information.
+For the whole image, use a sliding window to slide the patch through the whole image.
+
+This patchy operation is called convolution.
+1) Apply a set of weights - a filter - to extract local features
+2) Use multiple filters to extract different features
+3) Spatially share parameters of each filter
+
+CNNs - Convlolutions Neural Networks 
+1. Convolution: Apply filters to generate feature maps.
+2. Non-linearity: Often ReLU.
+3. Pooling: Downsampling operation on each feature map.
+
+For a neuron in hidden layer:
+- Take inputs from patch
+- Compute weighted sum
+- Apply bias
+for a neuron p,q in hidden layer
+|) applying a window of weights
+2) computing linear combinations:
+3) activating with non-linear function
+
+CNNs for classification: Feature learning
+1. Learn features in input image through convolution
+2. Introduce non-linearity through activation function (real-world data is non-linear!)
+3. Reduce dimensionality and preserve spatial invariance with pooling
+CNNS for classifiction: Class probabilities:
+- CONV and POOL layers output high-level features of input
+- Fully connected layer uses these features for classifying input image
+- Express output as probability of image belonging to a particular class
+
