@@ -1,0 +1,21 @@
+Programming noise
+After the target conductances have been defined, they are programmed on the PCM devices of the hardware using a closed-loop 
+iterative write-read-verify scheme [4]. The conductance values programmed in this way on the hardware will have a certain error 
+compared with the target values. This error is characterized by the programming noise. The programming noise is modeled based on 
+the standard deviation of the iteratively programmed conductance values measured from hardware.
+
+The equations used in the statistical model to implement the programming noise are (where we use small letters for the elements of the matrices W and, Gt etc.
+ and omit the indeces for brevity):
+
+gprog = gt + N(0,omega prog)
+omega prog = max(-1.1731gt^2 + 1.9650gt + 0.2635, 0)
+
+Drift
+After they have been programmed, the conductance values of PCM devices drift over time. This drift is an intrinsic property of the 
+phase-change material of a PCM device and is due to structural relaxation of the amorphous phase [5]. Knowing the conductance at time tc
+from the last programming pulse, gprog , the conductance evolution can be modeled as:
+
+ gdrift(t) = gprog(t/tc)^-v
+
+where v is the drift exponent which exhibits variability across a PCM array and a dependence on the target conductance state gt.
+
