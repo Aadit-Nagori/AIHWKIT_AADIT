@@ -1,0 +1,32 @@
+Deep Learning New Frontiers
+
+Limitations:
+Universal Approximation Theorem:
+A feedforward network with a single layer is sufficient to approximate, to
+an arbitrary precision, any continuous function.
+Caveats:
+1. the number of hidden units may be infeasibly large
+2. the resulting model may not generalize 
+
+aleatoric uncertainty: We need uncertainty metrics to assess the noise inherent to the data
+epistemic uncertainty: We need uncertainty metrics to assess the network's confidence in its predictions.
+
+Neural Network Limitations...
+1.Very data hungry (eg, often millions of examples)
+2.Computationally intensive to train and deploy (tractably requires GPUs)
+3.Easily fooled by adversarial examples
+4.Can be subject to algorithmic bias
+5.Poor at representing uncertainty (how do you know what the model knows?)
+6.Uninterpretable black boxes, difficult to trust
+7.Difficult to encode structure and prior knowledge during learning
+8.Finicky to optimize: non-convex, choice of architecture, learning parameters
+9.Often require expert knowledge to design, fine tune architectures
+
+New frontiers:
+Cnns using spatial structure:
+1) Apply a set of weights to extract local features
+2) Use multiple filters to extract different features
+3) Spatially share parameters of each fiter
+
+Automated Machine Learning.
+
