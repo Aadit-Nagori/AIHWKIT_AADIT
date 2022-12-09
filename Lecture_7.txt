@@ -1,0 +1,45 @@
+Lidar for Autonomous Driving 
+
+Signal/Noise = ((laser*reflectivity)/Range^2) * aperture * photon2electron_eff)/(Ambient Noise + Detector Noise)
+
+
+Safety
+Providing hazard indications to avoid safety events
+to the driver or its surrounding
+
+Can create sudden brakes
+Can create sudden maneuvers
+Can create sudden accelerations
+
+Examples: Misbehavior of other cars or pedestrians,
+extraordinary obstacles (tire debris, potholes etc.)
+
+Comfort
+Providing road insights to provide high quality
+and relaxed user experience driving
+
+No sudden brakes
+No sudden maneuvers
+No sudden accelerations
+
+Examples: Detection and Classification of
+Pedestrians, Vehicles and Trucks.
+
+Perception Requirements: Classification is important in order to have good trajectory prediction
+
+Vertical resolution improvement is more critical than frame rate and range
+
+ 
+
+Point Collision-Relevant Classification
+
+for p1 in points:
+	for p2 in points:
+		if p2 == pl:
+			continue
+
+		if L2(p1,p2) < max_distance and abs(p1(2]-p2{2])) > collision_height:
+			collision_relevant_points.append(p1) a=
+
+ 
+
