@@ -1,0 +1,87 @@
+Deep Learning for Speech
+
+Audio is highly variable
+1.Linguistic content
+2. Speaker characteristics
+	Age, gender
+	Accent, dialect
+	Emotion
+3.Background noise
+4.Channel conditions
+
+The datasets in the academic literature are mostly domain-specific, with matched
+training and testing conditions, e.g. audiobooks (Librispeech), telephone
+conversations on limited topics (Switchboard)
+
+Goal: capture the full of audio domains in one general model
+Data Selection and Segmentation
+1. “Verbatim” transcription
+	Small percentage of data collected on rev.com, but more than enough to train best-in-class models
+2. Audio files/transcripts need to be broken down into segments that deep learning models can be trained on
+	No more than 15-20s at a time
+	Academic datasets typically broken up into single sentences, for both training and test
+	We don't have sentence segmentation at test-time, so should we use it for training?
+		Best results: arbitrary, multi-speaker segments
+
+
+Encoder-Decoder with Attention
+1. End-to-end but can be thought of as multiple components 
+2. Key feature: auto-regression a Dec
+
+
+Layer Types
+1. Embedding Layer
+	Convolution - treat input like an image, get low-level features
+	Downsampling
+	Optional positional encoding
+
+2. RNN vs. Transformer vs. Conformer
+	RNNs (especially LSTMs) were standard until 2-3 years ago
+	Transformer (= self attention) becoming very popular
+		Efficient training - self-attention computations within each layer can be done in parallel
+	Conformer
+		Feed-forward + self-attention + convolutional + feed-forward
+
+Connectionist Temporal Classification (CTC)
+1.Works best when:
+	Input/output alignment is monotonic
+	Output sequence is same length as or shorter than input sequence
+	good assumptions for ASR, won't work for many other s2s problems (e.g. translation)
+2.CTCisa loss function and a decoding algorithm
+	CTC operates on the model outputs
+Model Architecture for CTC
+Model properties:
+1.No feedback (auto-regression): outputs are conditionally independent given inputs
+	Fixed number of outputs, given input sequence
+2.Softmax output layer
+	With added blank symbol <b>
+
+
+CTC Model Performance
+1.CTC not as good as attention encoder-decoder in terms of WER
+2.CTC alone can be better than hybrid in the right conditions
+	Deep transformer/conformer models
+	Large data
+3.Fast decoding
+	"10x speed compared to attention-based model
+	2-3x speed compared to hybrid model
+
+
+Decoding with a Language Model
+1.Virtually any kind of LM can be added
+	Neural LM (e.g. RNNLM, transformer LM) or n-gram LM
+	Word-level or subword-level
+2.Combine CTC and LM scores during beam search
+	Subword LM: update LM score every time a new output unit is added to hypothesis
+	Word LM:
+		Simplest: update LM score when a word is finished
+		With n-gram models: can update LM score when a new output unit is added, accountingfor possible words that could be decoded
+3.No longer technically “end-to-end”
+
+
+
+ 
+
+
+ 
+
