@@ -1,0 +1,44 @@
+Uncertainty in Deep Learning
+
+What do we mean by Uncertainty?
+Return a distribution over predictions rather than a singlé prediction.
+1.Classification: Output label along with its confidence.
+2.Regression: Output mean along withits variance.
+
+Good uncertainty estimates quantify when we can trust the model's predictions.
+Examples of dataset shift:
+1.Covariate shift. Distribution of features p(x) changes and p(ylx) is fixed.
+2.Open-set recognition. New classes may appear at test time.
+3.Label shift. Distribution of labels p(y) changes and p(xly) is fixed.
+Sources of Uncertainty 
+1. Model uncertainty
+	Many models can fit the training data well
+	Also known as epistemic uncertainty
+	Model uncertainty is “reducible”
+	Vanishes in the limit of infinite data (subject to model identifiability)
+2. Data uncertainty
+	Labeling noise (ex: human disagreement)
+	Measurement noise (ex: imprecise tools)
+	Missing data (ex: partially observed features, unobserved confounders)
+	Also known as aleatoric uncertainty
+	Data uncertainty is “irreducible*”
+		Persists even in the limit of infinite data
+		*Could be reduced with additional features/views
+
+Calibration Error = mod(Confidence - Accuracy)
+
+How to Measure quality of uncertainty
+1. Negative log-likelihood
+2. Brier Score
+
+ 
+
+Ensemble Learning
+1.Aprior distribution often involves the complication of approximate inference.
+2.Ensemble learning offers an alternative strategy to aggregate the predictions over a collection of models.
+3.Often winner of competitions!
+4.There are two considerations: the collection of models to ensemble; and the aggregation strategy.
+
+Popular approach is to average predictions of independently trained models, forming a
+mixture distribution. 
+
